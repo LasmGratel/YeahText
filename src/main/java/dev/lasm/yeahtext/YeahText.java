@@ -2,6 +2,7 @@ package dev.lasm.yeahtext;
 
 import java.text.Normalizer;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.UnaryOperator;
@@ -77,25 +78,15 @@ public class YeahText {
     }
 
     @SuppressWarnings("unchecked")
-    public static UnaryOperator<String> randomActions(String... actions) {
-        return randomActions(Arrays.stream(actions)
+    public static AleaRandomTransform randomActions(int seed, String... actions) {
+        return randomActions(seed, Arrays.stream(actions)
             .map(YeahText.TRANSFORMS::get)
-            .map(YeahText::randomActions)
             .toArray(Function[]::new));
     }
 
     @SafeVarargs
-    public static UnaryOperator<String> randomActions(Function<String, String>... actions) {
-        return new UnaryOperator<>() {
-            // TODO: Alea PRNG
-            private final Random random = new Random();
-
-            @Override
-            public String apply(String s) {
-                return s.codePoints().mapToObj(Character::toString).map(x -> actions[random.nextInt(actions.length)].apply(x))
-                    .collect(Collectors.joining());
-            }
-        };
+    public static AleaRandomTransform randomActions(int seed, Function<String, String>... actions) {
+        return new AleaRandomTransform("", "", "", String.valueOf(seed), actions);
     }
 
     @SafeVarargs
@@ -106,8 +97,23 @@ public class YeahText {
 
     @SafeVarargs
     public static UnaryOperator<String> charEcho(Function<String, String>... transforms) {
-        // TODO Echo random seed (action.seed += `${ci}${str}`;)
-        return randomActions(transforms);
+        return s -> {
+            var newC = new StringBuilder();
+            AtomicInteger i = new AtomicInteger();
+            s.codePoints().forEach(x -> {
+                for (var transform : transforms) {
+                    if (transform instanceof Transform) {
+                        if (((Transform) transform).action instanceof AleaRandomTransform) {
+                            // TODO This sucks
+                            ((AleaRandomTransform) ((Transform) transform).action).seed = "1" + i + s;
+                        }
+                    }
+                    newC.append(transform.apply(Character.toString(x)));
+                }
+                i.addAndGet(1);
+            });
+            return newC.toString();
+        };
     }
 
     public static final IntPredicate IS_ASCII_UPPERCASE = i -> 65 <= i && i <= 90;
@@ -140,14 +146,15 @@ public class YeahText {
         registerTransform("bold", "Bold (serif)", "bold-italic",
             s -> normalize(s, Normalizer.Form.NFD),
             s -> shiftCodePoint(s, IS_ASCII_UPPERCASE, 119743),
-            s -> shiftCodePoint(s, IS_ASCII_LOWERCASE, 119737));
+            s -> shiftCodePoint(s, IS_ASCII_LOWERCASE, 119737),
+            s -> shiftCodePoint(s, IS_ASCII_NUMBER, 120734)
+        );
 
         registerTransform("italic", "Italic (serif)", "bold-italic",
             s -> normalize(s, Normalizer.Form.NFD),
             s -> mapCodePoint(s, i -> i == 104 ? new int[]{8462} : new int[0]),
             s -> shiftCodePoint(s, IS_ASCII_UPPERCASE, 119795),
-            s -> shiftCodePoint(s, IS_ASCII_LOWERCASE, 119789),
-            s -> shiftCodePoint(s, IS_ASCII_NUMBER, 120734)
+            s -> shiftCodePoint(s, IS_ASCII_LOWERCASE, 119789)
         );
 
         registerTransform("bold-italic", "Bold / Italic (serif)", "bold-italic",
@@ -497,38 +504,34 @@ public class YeahText {
         );
 
         registerTransform("rand-bubble-square", "Ransom Bubble & Squares", "ransom-note-text",
-            cycleActions(
+            randomActions(1,
                 TRANSFORMS.get("bubble"), TRANSFORMS.get("black-bubble"),
                 TRANSFORMS.get("square"), TRANSFORMS.get("black-square")
             )
         );
 
         registerTransform("ransom-subtle", "Ransom Subtle", "ransom-note-text",
-            randomActions(
+            randomActions(1,
                 TRANSFORMS.get("bold"), TRANSFORMS.get("italic"),
                 TRANSFORMS.get("bold-italic"), TRANSFORMS.get("bold-sans"),
                 TRANSFORMS.get("italic-sans"), TRANSFORMS.get("bold-italic-sans")
             )
         );
 
-        // TODO set seed to 1
         registerTransform("ransom-soup-1", "Ransom Kitchen Soup 1", "ransom-note-text",
-            randomActions("bold,italic,bold-italic,script,bold-script,double-struck,fraktur,bold-fraktur,bold-sans,italic-sans,bold-italic-sans,monospace,bubble,black-bubble,square,black-square".split(","))
+            randomActions(1, "bold,italic,bold-italic,script,bold-script,double-struck,fraktur,bold-fraktur,bold-sans,italic-sans,bold-italic-sans,monospace,bubble,black-bubble,square,black-square".split(","))
         );
 
-        // TODO set seed to 2
         registerTransform("ransom-soup-2", "Ransom Kitchen Soup 2", "ransom-note-text",
-            randomActions("bold,italic,bold-italic,script,bold-script,double-struck,fraktur,bold-fraktur,bold-sans,italic-sans,bold-italic-sans,monospace,bubble,black-bubble,square,black-square".split(","))
+            randomActions(2, "bold,italic,bold-italic,script,bold-script,double-struck,fraktur,bold-fraktur,bold-sans,italic-sans,bold-italic-sans,monospace,bubble,black-bubble,square,black-square".split(","))
         );
 
-        // TODO set seed to 1
         registerTransform("fontmash-1", "FontMash 1", "ransom-note-text",
-            randomActions("bold,italic,bold-italic,script,bold-script,double-struck,fraktur,bold-fraktur,bold-sans,italic-sans,bold-italic-sans".split(","))
+            randomActions(1, "bold,italic,bold-italic,script,bold-script,double-struck,fraktur,bold-fraktur,bold-sans,italic-sans,bold-italic-sans,monospace".split(","))
         );
 
-        // TODO set seed to 2
         registerTransform("fontmash-2", "FontMash 2", "ransom-note-text",
-            randomActions("bold,italic,bold-italic,script,bold-script,double-struck,fraktur,bold-fraktur,bold-sans,italic-sans,bold-italic-sans".split(","))
+            randomActions(2, "bold,italic,bold-italic,script,bold-script,double-struck,fraktur,bold-fraktur,bold-sans,italic-sans,bold-italic-sans,monospace".split(","))
         );
 
         registerTransform("cuniform", "Cuniform", "cuniform",
@@ -567,7 +570,7 @@ public class YeahText {
         );
 
         registerTransform("canadian-aboriginal-titlecase", "Canadian Aboriginal Letterlike Tile Case ", "canadian-aboriginal",
-            randomActions(s -> mapCodePoint(s, "canab1"), s -> mapCodePoint(s, "canab2")),
+            randomActions(1, s -> mapCodePoint(s, "canab1"), s -> mapCodePoint(s, "canab2")),
             s -> mapCodePoint(s, "canabsm1")
         );
 
@@ -604,7 +607,7 @@ public class YeahText {
         );
 
         registerTransform("cjk-combo", "CJK Letterlike Combo", "east-asian-text",
-            randomActions("cjk-1", "cjk-2", "cjk-3")
+            randomActions(1, "cjk-1", "cjk-2", "cjk-3")
         );
 
         registerTransform("cjk-fw", "CJK Letterlike and Fullwidth", "east-asian-text",

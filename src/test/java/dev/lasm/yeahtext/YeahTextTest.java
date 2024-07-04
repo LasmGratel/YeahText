@@ -134,19 +134,19 @@ class YeahTextTest {
             YeahText.transform(original, "white-shapes"));
         assertEquals("\uD83C\uDD57\uD83C\uDD74\uD83C\uDD5B\uD83C\uDD7B\uD83C\uDD5E \uD83C\uDD63\uD83C\uDD74\uD83C\uDD67\uD83C\uDD83 \uD83C\uDD82\uD83C\uDD63\uD83C\uDD81\uD83C\uDD58\uD83C\uDD7D\uD83C\uDD56 \uD83C\uDD5C\uD83C\uDD88 \uD83C\uDD7E\uD83C\uDD5B\uD83C\uDD73 \uD83C\uDD75\uD83C\uDD61\uD83C\uDD78\uD83C\uDD54\uD83C\uDD7D\uD83C\uDD53.",
             YeahText.transform(original, "black-shapes"));
-        //TODO RANDOM
-//        assertEquals("\uD83C\uDD57\uD83C\uDD74\uD83C\uDD3Bⓛ\uD83C\uDD7E ⓣ\uD83C\uDD74\uD83C\uDD87ⓣ \uD83C\uDD42\uD83C\uDD63\uD83C\uDD81ⓘ\uD83C\uDD7Dⓖ \uD83C\uDD7C\uD83C\uDD88 ⓞ\uD83C\uDD3B\uD83C\uDD33 \uD83C\uDD75\uD83C\uDD81\uD83C\uDD38\uD83C\uDD74\uD83C\uDD7D\uD83C\uDD73.",
-//            YeahText.transform(original, "rand-bubble-square"));
-//        assertEquals("\uD835\uDC6F\uD835\uDE26\uD835\uDDF9\uD835\uDC25\uD835\uDE64 \uD835\uDC2D\uD835\uDE5A\uD835\uDE6D\uD835\uDC2D \uD835\uDE34\uD835\uDC95\uD835\uDE67\uD835\uDC22\uD835\uDE63\uD835\uDC20 \uD835\uDE2E\uD835\uDE6E \uD835\uDC28\uD835\uDE2D\uD835\uDDF1 \uD835\uDE27\uD835\uDE33\uD835\uDDF6\uD835\uDE5A\uD835\uDE63\uD835\uDE59.",
-//            YeahText.transform(original, "ransom-subtle"));
-//        assertEquals("ℌⓔ\uD835\uDDF9\uD835\uDC25\uD83C\uDD3E \uD835\uDC61\uD83C\uDD74\uD83C\uDD87\uD835\uDC95 \uD835\uDE9C\uD835\uDD99\uD83C\uDD81\uD835\uDC22\uD83C\uDD7D\uD835\uDC88 \uD83C\uDD5C\uD83C\uDD68 \uD835\uDC90\uD835\uDE95\uD835\uDE25 ⓕⓡ\uD835\uDE2A\uD83C\uDD54\uD83C\uDD7D\uD83C\uDD33.",
-//            YeahText.transform(original, "ransom-soup-1"));
-//        assertEquals("\uD835\uDE43\uD83C\uDD54\uD835\uDD91\uD83C\uDD5B\uD83C\uDD7E \uD835\uDD99\uD835\uDCEE\uD83C\uDD87\uD835\uDE35 \uD835\uDC60\uD83C\uDD83\uD835\uDCFB\uD835\uDC8A\uD835\uDCF7\uD835\uDDF4 \uD835\uDD92\uD835\uDC32 \uD835\uDDFC\uD835\uDCF5\uD835\uDDF1 \uD835\uDC53\uD835\uDD2F\uD83C\uDD78\uD835\uDE8E\uD835\uDD2B\uD835\uDE8D.",
-//            YeahText.transform(original, "ransom-soup-2"));
-//        assertEquals("\uD835\uDCD7\uD835\uDE26\uD835\uDD29\uD835\uDC25\uD835\uDE64 \uD835\uDC61\uD835\uDE8E\uD835\uDEA1\uD835\uDC61 \uD835\uDE00\uD835\uDD65\uD835\uDE9B\uD835\uDC22\uD835\uDE97\uD835\uDC54 \uD835\uDE2E\uD835\uDE6E \uD835\uDC5C\uD835\uDDF9\uD835\uDD89 \uD835\uDE27\uD835\uDE33\uD835\uDD8E\uD835\uDE5A\uD835\uDE97\uD835\uDE8D.",
-//            YeahText.transform(original, "fontmash-1"));
-//        assertEquals("\uD835\uDD73\uD835\uDE26\uD835\uDD5D\uD835\uDE61\uD835\uDE98 \uD835\uDD65ℯ\uD835\uDEA1\uD835\uDD31 \uD835\uDC60\uD835\uDE9D\uD835\uDCC7\uD835\uDC8A\uD835\uDCC3\uD835\uDD24 \uD835\uDD5E\uD835\uDC32 \uD835\uDD2C\uD835\uDCC1\uD835\uDD21 \uD835\uDC53\uD835\uDCFB\uD835\uDE92\uD835\uDDF2\uD835\uDCF7\uD835\uDDF1.",
-//            YeahText.transform(original, "fontmash-2"));
+
+        assertEquals("\uD83C\uDD57\uD83C\uDD74\uD83C\uDD3Bⓛ\uD83C\uDD7E ⓣ\uD83C\uDD74\uD83C\uDD87ⓣ \uD83C\uDD42\uD83C\uDD63\uD83C\uDD81ⓘ\uD83C\uDD7Dⓖ \uD83C\uDD7C\uD83C\uDD88 ⓞ\uD83C\uDD3B\uD83C\uDD33 \uD83C\uDD75\uD83C\uDD81\uD83C\uDD38\uD83C\uDD74\uD83C\uDD7D\uD83C\uDD73.",
+            YeahText.transform(original, "rand-bubble-square"));
+        assertEquals("\uD835\uDC6F\uD835\uDE26\uD835\uDDF9\uD835\uDC25\uD835\uDE64 \uD835\uDC2D\uD835\uDE5A\uD835\uDE6D\uD835\uDC2D \uD835\uDE34\uD835\uDC95\uD835\uDE67\uD835\uDC22\uD835\uDE63\uD835\uDC20 \uD835\uDE2E\uD835\uDE6E \uD835\uDC28\uD835\uDE2D\uD835\uDDF1 \uD835\uDE27\uD835\uDE33\uD835\uDDF6\uD835\uDE5A\uD835\uDE63\uD835\uDE59.",
+            YeahText.transform(original, "ransom-subtle"));
+        assertEquals("ℌⓔ\uD835\uDDF9\uD835\uDC25\uD83C\uDD3E \uD835\uDC61\uD83C\uDD74\uD83C\uDD87\uD835\uDC95 \uD835\uDE9C\uD835\uDD99\uD83C\uDD81\uD835\uDC22\uD83C\uDD7D\uD835\uDC88 \uD83C\uDD5C\uD83C\uDD68 \uD835\uDC90\uD835\uDE95\uD835\uDE25 ⓕⓡ\uD835\uDE2A\uD83C\uDD54\uD83C\uDD7D\uD83C\uDD33.",
+            YeahText.transform(original, "ransom-soup-1"));
+        assertEquals("\uD835\uDE43\uD83C\uDD54\uD835\uDD91\uD83C\uDD5B\uD83C\uDD7E \uD835\uDD99\uD835\uDCEE\uD83C\uDD87\uD835\uDE35 \uD835\uDC60\uD83C\uDD83\uD835\uDCFB\uD835\uDC8A\uD835\uDCF7\uD835\uDDF4 \uD835\uDD92\uD835\uDC32 \uD835\uDDFC\uD835\uDCF5\uD835\uDDF1 \uD835\uDC53\uD835\uDD2F\uD83C\uDD78\uD835\uDE8E\uD835\uDD2B\uD835\uDE8D.",
+            YeahText.transform(original, "ransom-soup-2"));
+        assertEquals("\uD835\uDCD7\uD835\uDE26\uD835\uDD29\uD835\uDC25\uD835\uDE64 \uD835\uDC61\uD835\uDE8E\uD835\uDEA1\uD835\uDC61 \uD835\uDE00\uD835\uDD65\uD835\uDE9B\uD835\uDC22\uD835\uDE97\uD835\uDC54 \uD835\uDE2E\uD835\uDE6E \uD835\uDC5C\uD835\uDDF9\uD835\uDD89 \uD835\uDE27\uD835\uDE33\uD835\uDD8E\uD835\uDE5A\uD835\uDE97\uD835\uDE8D.",
+            YeahText.transform(original, "fontmash-1"));
+        assertEquals("\uD835\uDD73\uD835\uDE26\uD835\uDD5D\uD835\uDE61\uD835\uDE98 \uD835\uDD65ℯ\uD835\uDEA1\uD835\uDD31 \uD835\uDC60\uD835\uDE9D\uD835\uDCC7\uD835\uDC8A\uD835\uDCC3\uD835\uDD24 \uD835\uDD5E\uD835\uDC32 \uD835\uDD2C\uD835\uDCC1\uD835\uDD21 \uD835\uDC53\uD835\uDCFB\uD835\uDE92\uD835\uDDF2\uD835\uDCF7\uD835\uDDF1.",
+            YeahText.transform(original, "fontmash-2"));
         assertEquals("\uD808\uDC02\uD808\uDC3C\uD808\uDC47\uD808\uDC47\uD808\uDDB8 \uD808\uDE26\uD808\uDC3C\uD808\uDE7D\uD808\uDE26 \uD809\uDD3C\uD808\uDE26\uD808\uDDF2\uD809\uDC15\uD809\uDC16\uD808\uDEDD \uD800\uDFA0\uD808\uDF28 \uD808\uDDB8\uD808\uDC47\uD808\uDC53 \uD800\uDFA3\uD808\uDDF2\uD809\uDC15\uD808\uDC3C\uD809\uDC16\uD808\uDC53.",
             YeahText.transform(original, "cuniform"));
         assertEquals("ꖾꗍꝆꝆꗞ ꖡꗍꘉꖡ ꕷꖡ𐝥ꕯꖦꗱ ꕮꔇ ꗞꝆꕒ ꘘ𐝥ꕯꗍꖦꕒ.",
@@ -161,9 +161,8 @@ class YeahTextTest {
             YeahText.transform(original, "canadian-aboriginal-3"));
         assertEquals("ᑋᕪᒻᒻᐤ ᐩᕪᕽᐩ ᔆᐩᔇᑊᐢᕐ ᔿᔉ ᐤᒻᒄ ᕝᔇᑊᕪᐢᒄ.",
             YeahText.transform(original, "canadian-aboriginal-sm"));
-        //TODO Random
-//        assertEquals("ᕼᕪᒻᒻᐤ ᐩᕪᕽᐩ ᔆᐩᔇᑊᐢᕐ ᔿᔉ ᐤᒻᒄ ᕝᔇᑊᕪᐢᒄ.",
-//            YeahText.transform(original, "canadian-aboriginal-titlecase"));
+        assertEquals("ᕼᕪᒻᒻᐤ ᐩᕪᕽᐩ ᔆᐩᔇᑊᐢᕐ ᔿᔉ ᐤᒻᒄ ᕝᔇᑊᕪᐢᒄ.",
+           YeahText.transform(original, "canadian-aboriginal-titlecase"));
         assertEquals("🄗⒠⒧⒧⒪ ⒯⒠⒳⒯ ⒮⒯⒭⒤⒩⒢ ⒨⒴ ⒪⒧⒟ ⒡⒭⒤⒠⒩⒟.",
             YeahText.transform(original, "parenthesis"));
         assertEquals("H⃝e⃝l⃝l⃝o⃝ t⃝e⃝x⃝t⃝ s⃝t⃝r⃝i⃝n⃝g⃝ m⃝y⃝ o⃝l⃝d⃝ f⃝r⃝i⃝e⃝n⃝d⃝.⃝",
@@ -176,11 +175,11 @@ class YeahTextTest {
             YeahText.transform(original, "cjk-2"));
         assertEquals("廾乇しし口 丁乇义丁 丂丁尺工刀彑 冊ﾘ 口し问 乍尺工乇刀问.",
             YeahText.transform(original, "cjk-3"));
-        //TODO Random
-//        assertEquals("卅乇乚ㄥ口 匕乇义匕 丂十尺工刀ム 冊ﾘ 口し冂 乍尺エ乇刀问.",
-//            YeahText.transform(original, "cjk-combo"));
-//        assertEquals("廾Ｈ㠪ｅㄥｌ乚ｌ口ｏ  丁ｔモｅ㐅ｘ匕ｔ  丂ｓ十ｔ尺ｒ工ｉ刀ｎ已ｇ  冊ｍﾘｙ  囗ｏㄥｌ刀ｄ  下ｆ尺ｒ工ｉ乇ｅ力ｎ问ｄ.．",
-//            YeahText.transform(original, "cjk-fw"));
+        assertEquals("卅乇乚ㄥ口 匕乇义匕 丂十尺工刀ム 冊ﾘ 口し冂 乍尺エ乇刀问.",
+            YeahText.transform(original, "cjk-combo"));
+        // TODO Echo
+        assertEquals("廾Ｈ㠪ｅㄥｌ乚ｌ口ｏ  丁ｔモｅ㐅ｘ匕ｔ  丂ｓ十ｔ尺ｒ工ｉ刀ｎ已ｇ  冊ｍﾘｙ  囗ｏㄥｌ刀ｄ  下ｆ尺ｒ工ｉ乇ｅ力ｎ问ｄ.．",
+            YeahText.transform(original, "cjk-fw"));
         assertEquals("H͢e͢l͢l͢o͢ ͢t͢e͢x͢t͢ ͢s͢t͢r͢i͢n͢g͢ ͢m͢y͢ ͢o͢l͢d͢ ͢f͢r͢i͢e͢n͢d͢.͢",
             YeahText.transform(original, "under-arrow"));
         assertEquals("H̼e̼l̼l̼o̼ ̼t̼e̼x̼t̼ ̼s̼t̼r̼i̼n̼g̼ ̼m̼y̼ ̼o̼l̼d̼ ̼f̼r̼i̼e̼n̼d̼.̼",

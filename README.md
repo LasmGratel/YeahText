@@ -8,7 +8,7 @@ Unicode text styling library
 
 Gradle:
 ```groovy
-implementation 'dev.lasm:yeahtext:1.0.0'
+implementation 'dev.lasm:yeahtext:1.1.0'
 ```
 
 In module-info.java:
@@ -24,12 +24,16 @@ YeahText.transform("Hello, world!", "bold-italic");
 //𝑯𝒆𝒍𝒍𝒐, 𝒘𝒐𝒓𝒍𝒅!
 ```
 
+## TODOs
+- [ ] Stacker
+- [ ] Rainbow Hearts
+
 ## License
 
 Apache-2.0
 
 ## Credits
 
-<https://github.com/macmcmeans/aleaPRNG>
+<https://github.com/coverslide/node-alea>
 
 <https://yaytext.com>

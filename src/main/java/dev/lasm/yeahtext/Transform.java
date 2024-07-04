@@ -14,7 +14,7 @@ public class Transform implements UnaryOperator<String> {
 
     public final String category;
 
-    private final Function<String, String> action;
+    final Function<String, String> action;
 
     public Transform(String id, String label, String category, Function<String, String> action) {
         this.id = id;
