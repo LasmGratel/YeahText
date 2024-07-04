@@ -2,11 +2,11 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'signing'
-    id "io.github.gradle-nexus.publish-plugin" version "2.0.0"
+    id("cn.lalaki.central") version "1.2.5"
 }
 
 group = 'dev.lasm'
-version = '1.0.0-SNAPSHOT'
+version = '1.0.0'
 archivesBaseName = 'yeahtext'
 
 repositories {
@@ -45,9 +45,21 @@ test {
     useJUnitPlatform()
 }
 
+var localMavenRepo = uri("local_repo")
 
+centralPortalPlus {
+    url = localMavenRepo
+    username = sonatypeUsername
+    password = sonatypePassword
+
+}
 
 publishing {
+    repositories {
+        maven {
+            url = localMavenRepo
+        }
+    }
     publications {
         mavenJava(MavenPublication) {
             artifactId = archivesBaseName
@@ -93,19 +105,6 @@ publishing {
         }
     }
 }
-
-nexusPublishing {
-    repositories {
-        sonatype {  //only for users registered in Sonatype after 24 Feb 2021
-
-            username = findProperty('sonatypeUsername') as String
-            password = findProperty('sonatypePassword') as String
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-        }
-    }
-}
-
 signing {
     sign publishing.publications.mavenJava
 }

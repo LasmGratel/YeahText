@@ -1,4 +1,7 @@
 # YeahText
+
+![Maven Central Version](https://img.shields.io/maven-central/v/dev.lasm/yeahtext)
+
 Unicode text styling library
 
 ## Usage
