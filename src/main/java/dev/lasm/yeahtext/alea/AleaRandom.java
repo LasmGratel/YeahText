@@ -5,7 +5,7 @@ import java.util.stream.DoubleStream;
 
 /**
  * Alea 0.9 PRNG
- * @author Johannes Baagøe <baagoe@baagoe.com>
+ * @author Johannes Baagoe (baagoe@baagoe.com)
  */
 public class AleaRandom {
     private double s0, s1, s2, c = 1;
